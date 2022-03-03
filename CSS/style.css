@@ -1,13 +1,16 @@
+/* import font */
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 body {
   margin: 0px;
 }
+
+/* cloud background style */
 .bgCloud {
   width: 100vw;
   height: 100vh;
   position: fixed;
 }
-
+/* cloud background animation */
 .cloud-intro {
   position: relative;
   height: 100%;
@@ -28,6 +31,7 @@ body {
   }
 }
 
+/* main content style */
 .content {
   background: linear-gradient(to right, #00d2ff, #3a7bd5);
   width: 100vw;
@@ -37,6 +41,7 @@ body {
   align-content: center;
 }
 
+/* quiz container style */
 .quizBox {
   width: 80vw;
   height: 80vh;
@@ -48,6 +53,7 @@ body {
   justify-items: center;
 }
 
+/* quiz setting container style */
 .quizSetting {
   position: absolute;
   width: 100vw;
@@ -59,13 +65,13 @@ body {
   flex-wrap: wrap;
 }
 
- .welcomeBox{
-    position: absolute;
-    width: 60vw;
-    height: 20vh;
-    top: 15%;
+/* welcome text style and animation */
+.welcomeBox {
+  position: absolute;
+  width: 60vw;
+  height: 20vh;
+  top: 15%;
 }
-
 svg {
   font: 25em Ubuntu;
   letter-spacing: 0.15em;
@@ -73,7 +79,6 @@ svg {
   height: 100%;
   margin-top: 5%;
 }
-
 svg text {
   fill: #111;
   stroke: #111;
@@ -82,7 +87,6 @@ svg text {
   stroke-dasharray: 100% 0;
   animation: stroke-offset 3s ease-out;
 }
-
 @keyframes stroke-offset {
   0% {
     fill-opacity: 0;
@@ -103,6 +107,7 @@ svg text {
   }
 }
 
+/* style for input form box */
 .quizSettingBox {
   width: 60vw;
   height: 60vh;
@@ -114,14 +119,13 @@ svg text {
   display: flex;
   justify-content: center;
 }
-
-.quizSettingBoxInput{
+.quizSettingBoxInput {
   margin-top: 15%;
   width: 80%;
   text-align: center;
 }
 
-.quizSettingBoxInput button{
+.quizSettingBoxInput button {
   font-size: 1.5em;
   font-weight: 700;
 }
