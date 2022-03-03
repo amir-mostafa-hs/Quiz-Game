@@ -118,4 +118,10 @@ svg text {
 .quizSettingBoxInput{
   margin-top: 15%;
   width: 80%;
+  text-align: center;
+}
+
+.quizSettingBoxInput button{
+  font-size: 1.5em;
+  font-weight: 700;
 }
