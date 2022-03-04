@@ -55,11 +55,16 @@ body {
   text-align: center;
   z-index: 1;
 }
+
+
+/* style progress line */
 .progress {
   margin: 0px 50px 50px 50px;
   height: 1.5rem;
   border: solid 2px rgb(13, 202, 240);
 }
+
+/* add background to flex row */
 .rowBg {
   margin: 0 10px;
   border: solid 1px gray;
@@ -67,6 +72,8 @@ body {
   font-size: 18px;
   font-weight: 600;
 }
+
+/* add background to row column */
 .colBg {
   margin: 5px;
   border: solid 1px gray;
@@ -78,6 +85,8 @@ body {
   padding: 0;
   min-height: 2.5rem;
 }
+
+/* style for derail name */
 .detail {
   background-color: rgba(128, 128, 128, 0.2);
   padding: 0 15px;
@@ -86,10 +95,12 @@ body {
   align-items: center;
   justify-content: center;
 }
+/* style for derail text */
 .detailInfo {
   width: 100%;
 }
 
+/* style for quiz text */
 .quiz {
   margin: 25px 10px;
 }
@@ -103,6 +114,14 @@ body {
   min-height: 2.5rem;
 }
 
+/* style answer box */
+.colBgAnswer {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  padding: 50px;
+  min-height: 30vh;
+}
 .answer {
   width: 100%;
   display: flex;
@@ -113,15 +132,6 @@ body {
   font-size: 18px;
   font-weight: 600;
 }
-
-.colBgAnswer {
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 50px;
-  padding: 50px;
-  min-height: 30vh;
-}
-
 .btnAnswerChek {
   font-size: 18px;
   font-weight: 600;
