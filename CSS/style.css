@@ -110,6 +110,20 @@ body {
 }
 .answer .answerChek {
   margin: 5px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.colBgAnswer {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btnAnswerChek {
+  margin-bottom: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  width: 70%;
 }
 
 /* quiz setting container style */
