@@ -51,11 +51,12 @@ body {
   border: 2px gray solid;
   display: flex;
   justify-items: center;
+  align-items: center;
   text-align: center;
   z-index: 1;
 }
 .progress {
-  margin: 25px 50px;
+  margin: 0px 50px 50px 50px;
   height: 1.5rem;
   border: solid 2px rgb(13, 202, 240);
 }
@@ -104,7 +105,6 @@ body {
 
 .answer {
   width: 100%;
-  margin: 50px;
   display: flex;
   justify-content: center;
 }
@@ -117,10 +117,12 @@ body {
 .colBgAnswer {
   flex-wrap: wrap;
   justify-content: center;
+  gap: 50px;
+  padding: 50px;
+  min-height: 30vh;
 }
 
 .btnAnswerChek {
-  margin-bottom: 50px;
   font-size: 18px;
   font-weight: 600;
   width: 70%;
