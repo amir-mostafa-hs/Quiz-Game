@@ -22,6 +22,29 @@ const createCategorySelector = async () => {
 };
 createCategorySelector();
 
+// get game data function
+let gameData;
+async function getGameData() {
+  try {
+    const getQuestion = await (
+      await fetch(
+        `https://opentdb.com/api.php?amount=${inputNumber.value}${
+          selectorCategory.value && `&category=${selectorCategory.value}`
+        }${
+          selectorDifficulty.value && `&difficulty=${selectorDifficulty.value}`
+        }${selectorType.value && `&type=${selectorType.value}`}`
+      )
+    ).json();
+    // console.log(getQuestion);
+    btnStartGame.parentElement.parentElement.parentElement.style.display =
+      "none";
+    gameData = getQuestion;
+    return getQuestion;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 // start game function
 const startGame = (categoryText, typeText, difficultyText, questionText) => {
   // get quiz box
@@ -42,7 +65,6 @@ const startGame = (categoryText, typeText, difficultyText, questionText) => {
   const quizText = quizBox.querySelector(".question");
   quizText.textContent = questionText;
 };
-startGame();
 
 // get start game button
 const btnStartGame = document.querySelector(".btnStartGame");
@@ -50,21 +72,16 @@ const btnStartGame = document.querySelector(".btnStartGame");
 btnStartGame.parentElement.addEventListener("submit", (evt) =>
   evt.preventDefault()
 );
-btnStartGame.addEventListener("click", async () => {
-  try {
-    const getQuestion = await (
-      await fetch(
-        `https://opentdb.com/api.php?amount=${inputNumber.value}${
-          selectorCategory.value && `&category=${selectorCategory.value}`
-        }${
-          selectorDifficulty.value && `&difficulty=${selectorDifficulty.value}`
-        }${selectorType.value && `&type=${selectorType.value}`}`
-      )
-    ).json();
-    console.log(getQuestion);
-    btnStartGame.parentElement.parentElement.parentElement.style.display =
-      "none";
-  } catch (error) {
-    console.error(error);
-  }
+btnStartGame.addEventListener("click", () => {
+  getGameData().then((data) => {
+    startGame(
+      data.results[0].category,
+      data.results[0].type,
+      data.results[0].difficulty,
+      data.results[0].question
+    );
+    console.log(data.results[0]);
+  });
 });
+
+function createQuiz() {}
