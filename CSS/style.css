@@ -214,3 +214,8 @@ svg text {
   font-size: 1.5em;
   font-weight: 700;
 }
+
+/* hidden box */
+.hiddenBox {
+  display: none;
+}

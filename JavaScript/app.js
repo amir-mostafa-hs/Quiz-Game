@@ -36,8 +36,9 @@ async function getGameData() {
       )
     ).json();
     // console.log(getQuestion);
-    btnStartGame.parentElement.parentElement.parentElement.style.display =
-      "none";
+    btnStartGame.parentElement.parentElement.parentElement.classList.add(
+      "hiddenBox"
+    );
     gameData = getQuestion;
     return getQuestion;
   } catch (error) {
@@ -46,7 +47,14 @@ async function getGameData() {
 }
 
 // start game function
-const startGame = (categoryText, typeText, difficultyText, questionText) => {
+const startGame = (
+  categoryText,
+  typeText,
+  difficultyText,
+  questionText,
+  answers,
+  correctAnswer
+) => {
   // get quiz box
   const quizBox = document.querySelector(".quizBox");
   // get progress bar
@@ -64,6 +72,40 @@ const startGame = (categoryText, typeText, difficultyText, questionText) => {
   // get quiz text show box
   const quizText = quizBox.querySelector(".question");
   quizText.textContent = questionText;
+  const multipleAnswer = document.querySelector(".multipleAnswer");
+  const booleanAnswer = document.querySelector(".booleanAnswer");
+  if (typeText === "multiple") {
+    let currentIndex = answers.length,
+      randomIndex;
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [answers[currentIndex], answers[randomIndex]] = [
+        answers[randomIndex],
+        answers[currentIndex],
+      ];
+    }
+    answers.forEach((item, index) => {
+      multipleAnswer.querySelector(`.answerChek${++index}`).textContent = item;
+    });
+    multipleAnswer.classList.remove("hiddenBox");
+  } else {
+    let currentIndex = answers.length,
+      randomIndex;
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [answers[currentIndex], answers[randomIndex]] = [
+        answers[randomIndex],
+        answers[currentIndex],
+      ];
+    }
+    console.log(answers);
+    answers.forEach((item, index) => {
+      booleanAnswer.querySelector(`.answerChek${++index}`).textContent = item;
+    });
+    booleanAnswer.classList.remove("hiddenBox");
+  }
 };
 
 // get start game button
@@ -74,11 +116,16 @@ btnStartGame.parentElement.addEventListener("submit", (evt) =>
 );
 btnStartGame.addEventListener("click", () => {
   getGameData().then((data) => {
+    const answers = [...data.results[0].incorrect_answers];
+    answers.push(data.results[0].correct_answer);
+    console.log(answers);
     startGame(
       data.results[0].category,
       data.results[0].type,
       data.results[0].difficulty,
-      data.results[0].question
+      data.results[0].question,
+      answers,
+      data.results[0].correct_answer
     );
     console.log(data.results[0]);
   });
