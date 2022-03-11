@@ -52,8 +52,7 @@ const startGame = (
   typeText,
   difficultyText,
   questionText,
-  answers,
-  correctAnswer
+  answers
 ) => {
   // get quiz box
   const quizBox = document.querySelector(".quizBox");
@@ -116,19 +115,31 @@ btnStartGame.parentElement.addEventListener("submit", (evt) =>
 );
 btnStartGame.addEventListener("click", () => {
   getGameData().then((data) => {
-    const answers = [...data.results[0].incorrect_answers];
-    answers.push(data.results[0].correct_answer);
+    const {
+      category,
+      type,
+      difficulty,
+      question,
+      incorrect_answers,
+      correct_answer,
+    } = data.results[0];
+    const answers = [...incorrect_answers];
+    answers.push(correct_answer);
     console.log(answers);
-    startGame(
-      data.results[0].category,
-      data.results[0].type,
-      data.results[0].difficulty,
-      data.results[0].question,
-      answers,
-      data.results[0].correct_answer
-    );
+    startGame(category, type, difficulty, question, answers);
     console.log(data.results[0]);
   });
 });
 
-function createQuiz() {}
+let count = 0;
+function createQuiz(answer) {
+  const {
+    category,
+    type,
+    difficulty,
+    question,
+    incorrect_answers,
+    correct_answer,
+  } = gameData.results[count];
+  
+}
